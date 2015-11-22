@@ -8,8 +8,6 @@ $(document).ready(function(){
         }
     });
 });
-var go;
-go = 'check GitHub';
 var map;
 function initMap() {
     var myStyles = [
