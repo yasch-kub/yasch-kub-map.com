@@ -11,10 +11,10 @@
     <script src="/js/initMap.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">yasch-kub-map</a>
+                <a class="navbar-brand"> </a>
             </div>
             <div>
                 <ul class="nav navbar-nav navbar-right">
