@@ -8,6 +8,7 @@ $(document).ready(function(){
         }
     });
 });
+/*check GiT*/
 var map;
 function initMap() {
     var myStyles = [
