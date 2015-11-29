@@ -40,6 +40,8 @@ function initMap() {
 
 }
 
+var altitude, longtitude;
+
 function putMarkers(data){
     var infowindows = [];
     data.forEach(function(currentMarker, index){
@@ -70,27 +72,29 @@ function putMarkers(data){
         });
 
         google.maps.event.addListener(map, 'click', function(event) {
-            console.log(event.latLng.lat());
-            console.log(event.latLng.lng());
+            altitude = event.latLng.lat();
+            longtitude = event.latLng.lng();
             geocodeLatLng(event.latLng);
+            $("input[name=address]").val(address);
         });
 
     });
 }
 
-function geocodeLatLng(latLng) {
+var address;
+
+var geocodeLatLng = function(latLng) {
     var geocoder = new google.maps.Geocoder;
+
     geocoder.geocode({'location': latLng}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-            if (results[1]) {
-
-                console.log(results[0].formatted_address);
-            } else {
+            if (results[1])
+                address = results[0].formatted_address;
+            else
                 console.log('No results found');
-            }
-        } else {
-            console.log('Geocoder failed due to: ' + status);
         }
+        else
+            console.log('Geocoder failed due to: ' + status);
     });
 }
 

@@ -11,9 +11,9 @@
 </head>
 <body>
  <div id="map"></div>
-    <form>
+    <form id="add-place" action="" method="post">
         <input name="name" placeholder="Назва місця">
-        <input name="adress" placeholder="Адреса місця">
+        <input name="address" placeholder="Адреса місця">
         <input name="category" placeholder="Категорія" list="category_list">
         <datalist id="category_list">
         </datalist>
