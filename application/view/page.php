@@ -14,6 +14,9 @@
     <form>
         <input name="name" placeholder="Назва місця">
         <input name="adress" placeholder="Адреса місця">
+        <input name="category" placeholder="Категорія" list="category_list">
+        <datalist id="category_list">
+        </datalist>
         <textarea name="info" placeholder="Інформація"></textarea>
     </form>
 </body>
