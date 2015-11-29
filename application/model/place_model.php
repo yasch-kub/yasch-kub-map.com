@@ -8,6 +8,7 @@ class place_model
             join marker on category.marker_id = marker.id';
         return $db->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     public static function getCategories(){
         $db = Db::getConnection();
         $query = 'select name from category';
