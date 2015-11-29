@@ -85,10 +85,10 @@ function geocodeLatLng(latLng) {
 
                 console.log(results[0].formatted_address);
             } else {
-                window.alert('No results found');
+                console.log('No results found');
             }
         } else {
-            window.alert('Geocoder failed due to: ' + status);
+            console.log('Geocoder failed due to: ' + status);
         }
     });
 }
