@@ -8,7 +8,8 @@ $(document).ready(function(){
                 $("#category_list").append('<option>' + value.name + '</option>');
             });
         }
-    })
+    });
+    
     $('#add-place').submit(function(event) {
         event.preventDefault();
         var data = $(this).serialize() + "&altitude=" + altitude +  "&longtitude=" + longtitude;
