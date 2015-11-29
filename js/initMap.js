@@ -30,12 +30,12 @@ function initMap() {
         zoom: 16,
         disableDefaultUI: true
     };
-
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 50.449102, lng: 30.458258},
         styles: myStyles,
         options:mapOptions
     });
+
 
 }
 
@@ -71,12 +71,26 @@ function putMarkers(data){
         google.maps.event.addListener(map, 'click', function(event) {
             console.log(event.latLng.lat());
             console.log(event.latLng.lng());
+            geocodeLatLng(event.latLng);
         });
 
     });
-
-
 }
 
+function geocodeLatLng(latLng) {
+    var geocoder = new google.maps.Geocoder;
+    geocoder.geocode({'location': latLng}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+            if (results[1]) {
+
+                console.log(results[0].formatted_address);
+            } else {
+                window.alert('No results found');
+            }
+        } else {
+            window.alert('Geocoder failed due to: ' + status);
+        }
+    });
+}
 
 

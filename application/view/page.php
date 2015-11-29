@@ -18,6 +18,7 @@
         <datalist id="category_list">
         </datalist>
         <textarea name="info" placeholder="Інформація"></textarea>
+        <button type="submit">Додати</button>
     </form>
 </body>
 </html>
