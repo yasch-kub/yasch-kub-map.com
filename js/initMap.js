@@ -8,6 +8,7 @@ $(document).ready(function(){
         }
     });
 });
+
 var map;
 function initMap() {
     var myStyles = [

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>yasch_kub-map</title>
     <link rel="stylesheet" href="/css/style.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYtYTNOBfD0RSWW36zI0lOP_r6oP8XyTk&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYtYTNOBfD0RSWW36zI0lOP_r6oP8XyTk&callback=initMap" defer></script>
     <script src="/js/jquery-2.1.4.js"></script>
     <script src="/js/initMap.js"></script>
     <script src="/js/AddPlace.js"></script>
