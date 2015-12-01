@@ -14,6 +14,18 @@ class place_model
     }
 
     /**
+     * @param $category
+     */
+    public static function getPlaceIconByCategory($category)
+    {
+        $db = Db::getConnection();
+        $query = sprintf("select icon from category join marker on category.marker_id = marker.id AND category.name = '%s'", $category);
+        $result = $db->query($query)->fetch(PDO::FETCH_ASSOC);
+
+        return $result['icon'];
+    }
+
+    /**
      * @return array
      */
     public static function getCategories()
@@ -38,6 +50,6 @@ class place_model
             $altitude,
             $longtitude);
 
-        $db->exec($query);
+        return $db->exec($query) != 0 ? true : false;
     }
 }

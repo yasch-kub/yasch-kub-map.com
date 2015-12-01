@@ -19,9 +19,11 @@ class place_controller
         exit(json_encode($categories));
     }
 
+    /**
+     *
+     */
     public static function action_add_place()
     {
-        var_dump($_POST);
         $name = self::clear($_POST['name']);
         $address = self::clear($_POST['address']);
         $category = self::clear($_POST['category']);
@@ -29,7 +31,18 @@ class place_controller
         $altitude = self::clear($_POST['altitude']);
         $longtitude = self::clear($_POST['longtitude']);
 
-        place_model::addPlace($name, $address, $category, $info, $altitude, $longtitude);
+        if (place_model::addPlace($name, $address, $category, $info, $altitude, $longtitude))
+        {
+            $result = array(
+                'name' => $name,
+                'info' => $info,
+                'longtitude' => $longtitude,
+                'altitude' => $altitude,
+                'icon' => place_model::getPlaceIconByCategory($category)
+            );
+        }
+
+        exit(json_encode($result));
     }
 
     private function clear($value)

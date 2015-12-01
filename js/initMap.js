@@ -1,3 +1,9 @@
+var map;
+var altitude, longtitude;
+var infowindows = [];
+var address;
+var currentInfoWindow;
+
 $(document).ready(function(){
     $.ajax({
         url: '/place',
@@ -9,7 +15,6 @@ $(document).ready(function(){
     });
 });
 
-var map;
 function initMap() {
     var myStyles = [
         {
@@ -37,51 +42,47 @@ function initMap() {
         options:mapOptions
     });
 
+    addClickListeners();
+};
 
-}
+var closeOpenedInfoWindow = function() {
+    if (currentInfoWindow != undefined)
+        currentInfoWindow.close();
+};
 
-var altitude, longtitude;
+var addClickListeners = function() {
+    google.maps.event.addListener(map, 'click', function() {
+        closeOpenedInfoWindow();
+    });
+
+    google.maps.event.addListener(map, 'click', function(event) {
+        altitude = event.latLng.lat();
+        longtitude = event.latLng.lng();
+        geocodeLatLng(event.latLng);
+        $("input[name=address]").val(address);
+    });
+};
 
 function putMarkers(data){
-    var infowindows = [];
-    data.forEach(function(currentMarker, index){
-
-        infowindows.push(new google.maps.InfoWindow({
+    data.forEach(function(currentMarker){
+        var infowindow = new google.maps.InfoWindow({
             content: currentMarker.info
-        }));
+        });
 
         var marker = new google.maps.Marker({
             position:{lat: parseFloat(currentMarker.altitude), lng: parseFloat(currentMarker.longtitude)},
             map: map,
             title: currentMarker.name,
-            icon:'/images/'+currentMarker.icon
+            icon:'/images/' + currentMarker.icon
         });
 
-        function closeAllInfoWindows(){
-            for (var i = 0; i < infowindows.length; i++){
-                infowindows[i].close();
-            }
-        }
         marker.addListener('click', function() {
-            closeAllInfoWindows();
-            infowindows[index].open(map, marker);
+            closeOpenedInfoWindow();
+            currentInfoWindow = infowindow;
+            currentInfoWindow.open(map, marker);
         });
-
-        google.maps.event.addListener(map, 'click', function() {
-            closeAllInfoWindows();
-        });
-
-        google.maps.event.addListener(map, 'click', function(event) {
-            altitude = event.latLng.lat();
-            longtitude = event.latLng.lng();
-            geocodeLatLng(event.latLng);
-            $("input[name=address]").val(address);
-        });
-
     });
 }
-
-var address;
 
 var geocodeLatLng = function(latLng) {
     var geocoder = new google.maps.Geocoder;
@@ -96,6 +97,4 @@ var geocodeLatLng = function(latLng) {
         else
             console.log('Geocoder failed due to: ' + status);
     });
-}
-
-
+};
