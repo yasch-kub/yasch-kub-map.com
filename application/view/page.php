@@ -8,6 +8,8 @@
     <script src="/js/jquery-2.1.4.js"></script>
     <script src="/js/initMap.js"></script>
     <script src="/js/AddPlace.js"></script>
+    <script src="/js/InfoWindow.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
  <div id="map"></div>

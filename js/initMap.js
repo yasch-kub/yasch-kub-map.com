@@ -65,8 +65,15 @@ var addClickListeners = function() {
 
 function putMarkers(data){
     data.forEach(function(currentMarker){
+        var contentInfoWindow = currentMarker.info.toString() + "<div class='rating'>" +
+            "<span><i class='fa fa-star-o'></i></span>" +
+            "<span><i class='fa fa-star-o'></i></span>" +
+            "<span><i class='fa fa-star-o'></i></span>" +
+            "<span><i class='fa fa-star-o'></i></span>" +
+            "<span><i class='fa fa-star-o'></i></span>" +
+            "</div>";
         var infowindow = new google.maps.InfoWindow({
-            content: currentMarker.info
+            content: contentInfoWindow
         });
 
         var marker = new google.maps.Marker({

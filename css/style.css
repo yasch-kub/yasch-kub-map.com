@@ -21,3 +21,20 @@ form,input,textarea,button{
 textarea{
     resize: none;
 }
+.rating {
+    float:left;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    font-size: 24px;
+    font-family: FontAwesome;
+}
+.rating > span {
+    display: inline-block;
+    position: relative;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+    cursor: pointer;
+    content: "\f005";
+    position: absolute;
+}
