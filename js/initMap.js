@@ -87,8 +87,16 @@ function putMarkers(data){
             closeOpenedInfoWindow();
             currentInfoWindow = infowindow;
             currentInfoWindow.open(map, marker);
+            $('.rating span').click(function(){
+                AddRating($(this).nextAll().length + 1, currentMarker.id);
+            });
         });
     });
+
+}
+
+var rating = function () {
+
 }
 
 var geocodeLatLng = function(latLng) {

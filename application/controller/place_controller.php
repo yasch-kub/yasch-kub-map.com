@@ -45,6 +45,19 @@ class place_controller
         exit(json_encode($result));
     }
 
+    /**
+     * @param $mark
+     * @param $id
+     */
+    public static function action_add_rating($mark, $id){
+        place_model::addRating($mark, $id);
+        exit(place_model::getAverageRating($id));
+    }
+
+    /**
+     * @param $value
+     * @return string
+     */
     private function clear($value)
     {
         return htmlspecialchars(strip_tags(trim($value)));
