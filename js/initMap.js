@@ -75,6 +75,10 @@ function putMarkers(data){
         var infowindow = new google.maps.InfoWindow({
             content: contentInfoWindow
         });
+        var infowindowListener = google.maps.event.addListener(infowindow, 'domready', function(){
+            UpdateRating(currentMarker.mark);
+            infowindowListener.remove();
+        });
 
         var marker = new google.maps.Marker({
             position:{lat: parseFloat(currentMarker.altitude), lng: parseFloat(currentMarker.longtitude)},

@@ -67,9 +67,13 @@ class place_model
 
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public static function getAverageRating($id){
         $db = Db::getConnection();
-        $query = sprintf("SELECT ROUND(AVG(mark) * 2, 0) / 2 AS mark FROM rating WHERE place_id = '%s'", $id);
+        $query = sprintf("SELECT mark FROM place WHERE place.id = '%s'", $id);
         $result = $db->query($query)->fetch(PDO::FETCH_ASSOC);
         return $result['mark'];
     }
