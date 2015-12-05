@@ -1,6 +1,5 @@
 var map;
 var altitude, longtitude;
-var infowindows = [];
 var address;
 var currentInfoWindow;
 
@@ -65,13 +64,13 @@ var addClickListeners = function() {
 
 function putMarkers(data){
     data.forEach(function(currentMarker){
-        var contentInfoWindow = currentMarker.info.toString() + "<div class='rating'>" +
+        var contentInfoWindow = "<div>" + currentMarker.info.toString() + "<div class='rating'>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
-            "</div>";
+            "</div></div>";
 
         var infowindow = new google.maps.InfoWindow({
             content: contentInfoWindow
@@ -83,14 +82,13 @@ function putMarkers(data){
             title: currentMarker.name,
             icon:'/images/' + currentMarker.icon
         });
-        infowindow.addListener('domready', function(){
-            UpdateRating(currentMarker.mark);
-        });
+
 
         marker.addListener('click', function() {
             closeOpenedInfoWindow();
             currentInfoWindow = infowindow;
             currentInfoWindow.open(map, marker);
+            $('.rating span').off();
             $('.rating span').click(function(){
                 console.log($(this));
                 console.log('claick rating');
@@ -98,10 +96,6 @@ function putMarkers(data){
             });
         });
     });
-
-}
-
-var rating = function () {
 
 }
 
