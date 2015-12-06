@@ -2,6 +2,7 @@ var map;
 var altitude, longtitude;
 var address;
 var currentInfoWindow;
+var currentMarker;
 
 $(document).ready(function(){
     $.ajax({
@@ -47,6 +48,9 @@ function initMap() {
 var closeOpenedInfoWindow = function() {
     if (currentInfoWindow != undefined)
         currentInfoWindow.close();
+    $('#data').fadeOut(400, function() {
+        $('#data').html('');
+    });
 };
 
 var addClickListeners = function() {
@@ -63,40 +67,50 @@ var addClickListeners = function() {
 };
 
 function putMarkers(data){
-    data.forEach(function(currentMarker){
-        var contentInfoWindow = "<div>" + currentMarker.info.toString() + "<div class='rating'>" +
+    data.forEach(function(curMarker){
+        var contentInfoWindow = "<div>" + curMarker.info.toString() + "<div class='rating'>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
-            "</div></div>";
+            "</div><button class='show-details'>Детальніше</button></div>";
 
         var infowindow = new google.maps.InfoWindow({
             content: contentInfoWindow
         });
         var infowindowListener = google.maps.event.addListener(infowindow, 'domready', function(){
-            UpdateRating(currentMarker.mark);
+            UpdateRating(curMarker.mark);
             infowindowListener.remove();
         });
 
         var marker = new google.maps.Marker({
-            position:{lat: parseFloat(currentMarker.altitude), lng: parseFloat(currentMarker.longtitude)},
+            position:{lat: parseFloat(curMarker.altitude), lng: parseFloat(curMarker.longtitude)},
             map: map,
-            title: currentMarker.name,
-            icon:'/images/' + currentMarker.icon
+            title: curMarker.name,
+            icon:'/images/' + curMarker.icon
         });
-
 
         marker.addListener('click', function() {
             closeOpenedInfoWindow();
             currentInfoWindow = infowindow;
+            currentMarker = curMarker;
+            console.log(currentMarker);
             currentInfoWindow.open(map, marker);
             $('.rating span').off();
             $('.rating span').click(function(){
                 console.log($(this));
                 console.log('claick rating');
-                AddRating($(this).nextAll().length + 1, currentMarker.id);
+                AddRating($(this).nextAll().length + 1, curMarker.id);
+            });
+
+            $('.show-details').off();
+            $('.show-details').click(function() {
+                $.post('/user/show_details', curMarker.id, function(data) {
+                    $('#data').html(data);
+                });
+                console.log($('.comment'));
+                $('#data').showOrHideElement();
             });
         });
     });

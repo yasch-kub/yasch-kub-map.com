@@ -9,18 +9,18 @@
     <script src="/js/initMap.js"></script>
     <script src="/js/AddPlace.js"></script>
     <script src="/js/InfoWindow.js"></script>
+    <script src="/js/user.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
- <div id="map"></div>
-    <form id="add-place" action="" method="post" autocomplete="off">
-        <input name="name" placeholder="Назва місця">
-        <input name="address" placeholder="Адреса місця">
-        <input name="category" placeholder="Категорія" list="category_list">
-        <datalist id="category_list">
-        </datalist>
-        <textarea name="info" placeholder="Інформація"></textarea>
-        <button type="submit">Додати</button>
-    </form>
+    <div id="map"></div>
+    <div id="control-panel">
+        <button id="add-place-button">
+            Додати місце
+        </button>
+        <?php include_once root . '/application/view/templates/add_place_form.php'; ?>
+    </div>
+    <div id="data">
+    </div>
 </body>
 </html>

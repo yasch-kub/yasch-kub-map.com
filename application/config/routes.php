@@ -4,5 +4,7 @@
         'place/categories' => 'place/get_categories',
         'place/add' => 'place/add_place',
         'place' => 'place/put_markers',
+        'user/show_details' => 'user/show_details',
+        'user/add_comment' => 'user/add_comment',
         '' => 'page/view'
     );

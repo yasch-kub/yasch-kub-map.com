@@ -24,12 +24,12 @@ class place_controller
      */
     public static function action_add_place()
     {
-        $name = self::clear($_POST['name']);
-        $address = self::clear($_POST['address']);
-        $category = self::clear($_POST['category']);
-        $info = self::clear($_POST['info']);
-        $altitude = self::clear($_POST['altitude']);
-        $longtitude = self::clear($_POST['longtitude']);
+        $name = Validation::clear($_POST['name']);
+        $address = Validation::clear($_POST['address']);
+        $category = Validation::clear($_POST['category']);
+        $info = Validation::clear($_POST['info']);
+        $altitude = Validation::clear($_POST['altitude']);
+        $longtitude = Validation::clear($_POST['longtitude']);
 
         if (place_model::addPlace($name, $address, $category, $info, $altitude, $longtitude))
         {
@@ -53,14 +53,4 @@ class place_controller
         place_model::addRating($mark, $id);
         exit(place_model::getAverageRating($id));
     }
-
-    /**
-     * @param $value
-     * @return string
-     */
-    private function clear($value)
-    {
-        return htmlspecialchars(strip_tags(trim($value)));
-    }
-
 }
