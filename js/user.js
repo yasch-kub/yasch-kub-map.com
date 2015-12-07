@@ -20,7 +20,7 @@ $(document).ready(function() {
         $('#add-place').showOrHideElement();
     });
 
-    $('#to-registration-button').click(function() {
+    $('#to-registration-button, #login-form a').click(function() {
         if($('#login-form').css('display') != 'none')
             $('#login-form').fadeOut(400, function() {
                 $('#registration-form').showOrHideElement();
@@ -29,7 +29,7 @@ $(document).ready(function() {
             $('#registration-form').showOrHideElement();
     });
 
-    $('#to-login-button').click(function() {
+    $('#to-login-button, #registration-form a').click(function() {
         if($('#registration-form').css('display') != 'none')
             $('#registration-form').fadeOut(400, function() {
                 $('#login-form').showOrHideElement();
