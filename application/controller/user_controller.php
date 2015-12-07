@@ -19,4 +19,17 @@ class user_controller
         include_once root . '/application/view/comment_view.php';
     }
 
+    public static function action_login()
+    {
+        extract($_POST);
+        user_model::login($login, $password);
+    }
+
+    public static function action_registration()
+    {
+        extract($_POST);
+        $login = Validation::clear($login);
+        $email = Validation::clear($email);
+        user_model::registration($login, $password, $password_confirm, $email);
+    }
 }

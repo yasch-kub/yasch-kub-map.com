@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
+    <button type="button" id="to-login-button">Вхід</button>
+    <button type="button" id="to-registration-button">Реєстрація</button>
     <div id="map"></div>
     <div id="control-panel">
         <button id="add-place-button">
@@ -22,5 +24,7 @@
     </div>
     <div id="data">
     </div>
+    <?php include_once root . '/application/view/templates/login.php'; ?>
+    <?php include_once root . '/application/view/templates/registration.php'; ?>
 </body>
 </html>

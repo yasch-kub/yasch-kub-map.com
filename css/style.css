@@ -53,5 +53,8 @@ form#add-place {
 
 .comment>div {
     margin-bottom: 15px;
+}
 
+#registration-form, #login-form {
+    display: none;
 }

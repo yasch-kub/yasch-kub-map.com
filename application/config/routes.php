@@ -6,5 +6,7 @@
         'place' => 'place/put_markers',
         'user/show_details' => 'user/show_details',
         'user/add_comment' => 'user/add_comment',
+        'user/login' => 'user/login',
+        'user/registration' => 'user/registration',
         '' => 'page/view'
     );
