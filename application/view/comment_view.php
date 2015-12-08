@@ -10,7 +10,7 @@
         </span>
         <span>
             <b>Користувач:</b>
-            <? echo $comment['user_id']; ?>
+            <? echo $comment['login']; ?>
         </span>
     </div>
 </div>

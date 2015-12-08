@@ -12,10 +12,10 @@ class user_controller
     {
         $id = $_POST['id'];
         $comment['value'] = Validation::clear($_POST['comment']);
-        $comment['user_id'] = '1';
+        $comment['login'] = $_COOKIE['login'];
         $comment['date'] = date('jS \of F Y G:i:s');
 
-        user_model::addComment($id, $comment['value'], $comment['date'], $comment['user_id']);
+        user_model::addComment($id, $comment['value'], $comment['date'], $comment['login']);
         include_once root . '/application/view/comment_view.php';
     }
 

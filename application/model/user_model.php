@@ -8,7 +8,7 @@ class user_model
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         try {
-            $stmt = $db->prepare("INSERT INTO comment(place_id, value, date, user_id) VALUES (:id, :comment, :date, :user)");
+            $stmt = $db->prepare("INSERT INTO comment(place_id, value, date, user_id) VALUES (:id, :comment, :date, (SELECT user.id FROM user WHERE login = :user))");
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':comment', $comment);
             $stmt->bindParam(':date', $date);
@@ -25,7 +25,7 @@ class user_model
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         try {
-            $stmt = $db->prepare("SELECT comment.value, date, user_id FROM comment JOIN place ON place.id = comment.place_id AND place.id = :id");
+            $stmt = $db->prepare("SELECT comment.value, date, login FROM comment JOIN place ON place.id = comment.place_id AND place.id = :id JOIN user ON user.id = user_id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -52,8 +52,8 @@ class user_model
             $error['answer'] = 'OK';
             self::saveUser($login, $password, $email);
 
-            setcookie('login', $login, time() + 3600);
-            setcookie('email', $email, time() + 3600);
+            setcookie('login', $login, time() + 3600, "/");
+            setcookie('email', $email, time() + 3600, "/");
         }
 
         exit(json_encode($error));
@@ -78,8 +78,8 @@ class user_model
             {
                 $error['answer'] = 'ОК';
 
-                setcookie('login', $login, time() + 3600);
-                setcookie('email', $user['email'], time() + 3600);
+                setcookie('login', $login, time() + 3600, "/");
+                setcookie('email', $user['email'], time() + 3600, "/");
             }
             else
                 $error['password'] = 'Невірний пароль.';
