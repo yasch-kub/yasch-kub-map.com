@@ -50,7 +50,15 @@ class place_controller
      * @param $id
      */
     public static function action_add_rating($mark, $id){
-        place_model::addRating($mark, $id);
-        exit(place_model::getAverageRating($id));
+        if (isset($_COOKIE['login'])){
+            if (!place_model::isUserRatePlace($id)){
+                place_model::addRating($mark, $id);
+                exit(place_model::getAverageRating($id));
+            }
+            else
+                exit("Ви вже проголосували");
+        }
+        else
+            exit("Ви не війшли в акаунт");
     }
 }

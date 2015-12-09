@@ -13,8 +13,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
-    <button type="button" id="to-login-button">Вхід</button>
-    <button type="button" id="to-registration-button">Реєстрація</button>
+    <div class="is-login"><? echo($_COOKIE['login']); ?></div>
+    <?php if(isset($_COOKIE['login'])):?>
+        <button class="logout-button">Вийти</button>
+    <?php else: ?>
+        <button type="button" id="to-login-button">Вхід</button>
+        <button type="button" id="to-registration-button">Реєстрація</button>
+    <?php endif; ?>
     <div id="map"></div>
     <div id="control-panel">
         <button id="add-place-button">

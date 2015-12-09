@@ -20,23 +20,7 @@ $(document).ready(function() {
         $('#add-place').showOrHideElement();
     });
 
-    $('#to-registration-button, #login-form a').click(function() {
-        if($('#login-form').css('display') != 'none')
-            $('#login-form').fadeOut(400, function() {
-                $('#registration-form').showOrHideElement();
-            });
-        else
-            $('#registration-form').showOrHideElement();
-    });
-
-    $('#to-login-button, #registration-form a').click(function() {
-        if($('#registration-form').css('display') != 'none')
-            $('#registration-form').fadeOut(400, function() {
-                $('#login-form').showOrHideElement();
-            });
-        else
-            $('#login-form').showOrHideElement()
-    });
+    registrationAndLoginEventListener();
 
     $('#registration-form').submit(function(event) {
         event.preventDefault();
@@ -47,6 +31,15 @@ $(document).ready(function() {
         event.preventDefault();
         sendFormData('/user/login', $(this));
     });
+    $('body').on('click','.logout-button',function(event){
+        event.preventDefault();
+        $.post('/logout', null, function(data){
+            $('.is-login').after('<button type="button" id="to-login-button">Вхід</button><button type="button" id="to-registration-button">Реєстрація</button>');
+            $('.is-login').html('');
+            $('.logout-button').remove();
+            registrationAndLoginEventListener();
+        });
+    });
 });
 
 function sendFormData(url, form) {
@@ -54,7 +47,13 @@ function sendFormData(url, form) {
     $.post(url, form.serialize(), function(data) {
         console.log(data);
         console.log(url);
-
+        if(data.answer == "OK") {
+            $('.is-login').html(data.loginvalue);
+            $('.is-login').after('<button class="logout-button">Вийти</button>');
+            $('#to-login-button').remove();
+            $('#to-registration-button').remove();
+        }
+        console.log(data.loginvalue);
         inputs.each(function() {
             var curAnswer = data[$(this).attr('name')];
             var next = $(this).next();
@@ -72,4 +71,26 @@ function sendFormData(url, form) {
             }
         });
     }, 'json');
+    form.trigger('reset');
 }
+
+function registrationAndLoginEventListener(){
+    $('#to-registration-button, #login-form a').click(function() {
+        if($('#login-form').css('display') != 'none')
+            $('#login-form').fadeOut(400, function() {
+                $('#registration-form').showOrHideElement();
+            });
+        else
+            $('#registration-form').showOrHideElement();
+    });
+
+    $('#to-login-button, #registration-form a').click(function() {
+        if($('#registration-form').css('display') != 'none')
+            $('#registration-form').fadeOut(400, function() {
+                $('#login-form').showOrHideElement();
+            });
+        else
+            $('#login-form').showOrHideElement()
+    });
+}
+

@@ -51,7 +51,7 @@ class user_model
         {
             $error['answer'] = 'OK';
             self::saveUser($login, $password, $email);
-
+            $error['loginvalue'] = $login;
             setcookie('login', $login, time() + 3600, "/");
             setcookie('email', $email, time() + 3600, "/");
         }
@@ -76,7 +76,8 @@ class user_model
 
             if (password_verify($password, $hash))
             {
-                $error['answer'] = 'ОК';
+                $error['answer'] = 'OK';
+                $error['loginvalue'] = $login;
 
                 setcookie('login', $login, time() + 3600, "/");
                 setcookie('email', $user['email'], time() + 3600, "/");

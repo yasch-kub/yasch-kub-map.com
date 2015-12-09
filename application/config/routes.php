@@ -8,5 +8,6 @@
         'user/add_comment' => 'user/add_comment',
         'user/login' => 'user/login',
         'user/registration' => 'user/registration',
+        'logout' => 'user/logout',
         '' => 'page/view'
     );

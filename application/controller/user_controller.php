@@ -32,4 +32,10 @@ class user_controller
         $email = Validation::clear($email);
         user_model::registration($login, $password, $password_confirm, $email);
     }
+
+    public static function action_logout()
+    {
+        setcookie("login", "", time()-3600, "/");
+        setcookie("email", "", time()-3600, "/");
+    }
 }

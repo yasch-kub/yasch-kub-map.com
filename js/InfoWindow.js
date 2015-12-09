@@ -4,7 +4,10 @@ function AddRating(mark, id){
         type: 'post',
         success: function(data){
             console.log(data);
-            UpdateRating(data);
+            if ($.isNumeric(data))
+                UpdateRating(data);
+            else
+                alert(data);
         }
     });
 }

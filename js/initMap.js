@@ -100,7 +100,7 @@ function putMarkers(data){
             $('.rating span').off();
             $('.rating span').click(function(){
                 console.log($(this));
-                console.log('claick rating');
+                console.log('click rating');
                 AddRating($(this).nextAll().length + 1, curMarker.id);
             });
 
