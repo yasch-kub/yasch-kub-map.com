@@ -41,7 +41,6 @@
 
         <div id="map"></div>
         <div id="control-panel">
-
             <?php include_once root . '/application/view/templates/add_place_form.php'; ?>
         </div>
         <div id="data">

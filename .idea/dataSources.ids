@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - yasch_kub-map@localhost" uuid="e915ccd8-ea9f-475a-b32b-3e976a7edf33">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="MySQL - @localhost" uuid="2d8b6edc-df84-4dad-8873-9c2ccf9948de">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

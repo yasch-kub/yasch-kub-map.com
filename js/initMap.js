@@ -33,6 +33,7 @@ function initMap() {
     ];
 
     var mapOptions = {
+        minZoom: 16,
         zoom: 16,
         disableDefaultUI: true
     };

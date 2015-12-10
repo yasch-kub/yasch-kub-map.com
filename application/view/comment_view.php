@@ -1,16 +1,8 @@
 <div>
-    <div class="comment-text">
-        <b>Коментар:</b>
-        <? echo $comment['value']; ?>
+    <div class="commenterImage">
+        <img src="/images/user-logo.jpeg"/>
     </div>
-    <div class="comment-information">
-        <span>
-            <b>Дата:</b>
-            <? echo $comment['date']; ?>
-        </span>
-        <span>
-            <b>Користувач:</b>
-            <? echo $comment['login']; ?>
-        </span>
+    <div class="commentText">
+        <p> <? echo $comment['value']; ?></p> <span class="date sub-text"> <? echo $comment['date']; ?></span>
     </div>
 </div>

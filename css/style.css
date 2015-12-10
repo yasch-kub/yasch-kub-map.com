@@ -21,7 +21,7 @@ nav{
     font-size: 17px;
     border-radius: 0 !important;
 }
-nav li{
+nav li, nav a{
     transition: all 0.6s ease;
 }
 nav li:hover{
@@ -94,7 +94,7 @@ form#add-place {
 #data {
     display: none;
     width: 100%;
-    box-sizing: content-box;
+    box-sizing: border-box;
     padding: 40px;
 }
 
@@ -169,4 +169,27 @@ form {
 
 .fa-star, .fa-star-half-o{
     color: #ffed3d;
+}
+
+/*Comments*/
+
+.commenterImage {
+    width: 45px;
+    margin-right: 5px;
+    height: 100%;
+    float: left;
+}
+.commenterImage img {
+    width: 100%;
+    border-radius: 50%;
+}
+.commentText p {
+    width: 200px;
+    font-size: 17px;
+    margin: 0;
+}
+.sub-text {
+    color:#aaa;
+    font-family: verdana;
+    font-size: 12px;
 }
