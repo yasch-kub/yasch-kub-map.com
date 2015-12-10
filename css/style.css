@@ -17,7 +17,8 @@ body {
 }
 nav{
     font-family: 'PF DinDisplay';
-    font-size: 17px;
+    font-size: 15px;
+    border-radius: 0 !important;
 }
 nav li{
     transition: all 0.6s ease;
@@ -25,22 +26,30 @@ nav li{
 nav li:hover{
     background-color: #080808;
 }
+.navbar-header{
+    padding-left: 2%;
+}
 .navbar-brand{
     text-transform:uppercase;
     padding-left: 50px !important;
     background-image: url('../images/map30.png');
     background-repeat: no-repeat;
     background-position: 5% 50%;
+    background-size: 30px;
 }
-
+.navbar-right{
+    padding-right: 2%;
+}
 #add-place-button{
     padding-right: 20px;
     background-image: url('../images/pointer.png');
     background-repeat: no-repeat;
-    background-position: right 50%;
+    background-position: 95% 50%;
     background-size: 30px;
 }
-
+.glyphicon{
+    margin-right: 2px;
+}
 #map{
     width: 100%;
     height: 60%;
