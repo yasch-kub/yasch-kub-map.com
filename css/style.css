@@ -1,13 +1,44 @@
+@font-face {
+    font-family: PF DinDisplay;
+    src: url(font/pfdindisplayreg2.woff);
+    font-weight:400;
+    font-style:normal
+}
 html{
     width: 100%;
     height: 100%;
-
 }
-body{
+body {
+    font-family: 'PF DinDisplay';
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+}
+nav{
+    font-family: 'PF DinDisplay';
+    font-size: 17px;
+}
+nav li{
+    transition: all 0.6s ease;
+}
+nav li:hover{
+    background-color: #080808;
+}
+.navbar-brand{
+    text-transform:uppercase;
+    padding-left: 50px !important;
+    background-image: url('../images/map30.png');
+    background-repeat: no-repeat;
+    background-position: 5% 50%;
+}
+
+#add-place-button{
+    padding-right: 20px;
+    background-image: url('../images/pointer.png');
+    background-repeat: no-repeat;
+    background-position: right 50%;
+    background-size: 30px;
 }
 
 #map{
