@@ -17,7 +17,7 @@ body {
 }
 nav{
     font-family: 'PF DinDisplay';
-    font-size: 15px;
+    font-size: 17px;
     border-radius: 0 !important;
 }
 nav li{
@@ -51,6 +51,8 @@ nav li:hover{
     margin-right: 2px;
 }
 #map{
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 60%;
 }

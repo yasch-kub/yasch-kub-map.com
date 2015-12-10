@@ -25,20 +25,19 @@
                         <li id="add-place-button"><a href="#">Додати місце</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Реєстрація</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вхід</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user is-login"></span> <? echo($_COOKIE['login']); ?></a></li>
+                        <?php if(isset($_COOKIE['login'])):?>
+                            <li class="logout-button"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Вихід</a></li>
+                        <?php else: ?>
+                            <li id="to-registration-button"><a href="#"><span class="glyphicon glyphicon-user"></span> Реєстрація</a></li>
+                            <li id="to-login-button"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вхід</a></li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="is-login"><? echo($_COOKIE['login']); ?></div>
-    <?php if(isset($_COOKIE['login'])):?>
-        <button class="logout-button">Вийти</button>
-    <?php else: ?>
-        <button type="button" id="to-login-button">Вхід</button>
-        <button type="button" id="to-registration-button">Реєстрація</button>
-    <?php endif; ?>
+
     <div id="map"></div>
     <div id="control-panel">
 
