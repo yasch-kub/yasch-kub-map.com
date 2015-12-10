@@ -26,8 +26,8 @@
                             <li id="add-place-button"><a href="#">Додати місце</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-user is-login"></span> <? echo($_COOKIE['login']); ?></a></li>
                             <?php if(isset($_COOKIE['login'])):?>
+                                <li class="is-login"><a href="#"><span class="glyphicon glyphicon-user"></span> <? echo($_COOKIE['login']); ?></a></li>
                                 <li class="logout-button"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Вихід</a></li>
                             <?php else: ?>
                                 <li id="to-registration-button"><a href="#"><span class="glyphicon glyphicon-user"></span> Реєстрація</a></li>
@@ -49,9 +49,10 @@
         <?php include_once root . '/application/view/templates/login.php'; ?>
         <?php include_once root . '/application/view/templates/registration.php'; ?>
     </div>
-
+<!--
     <footer>
         <p> &copy; YASCH-KUB Inc. </p>
     </footer>
+-->
 </body>
 </html>

@@ -34,8 +34,8 @@ $(document).ready(function() {
     $('body').on('click','.logout-button',function(event){
         event.preventDefault();
         $.post('/logout', null, function(data){
-            $('.is-login').after('<button type="button" id="to-login-button">Вхід</button><button type="button" id="to-registration-button">Реєстрація</button>');
-            $('.is-login').html('');
+            $('.is-login').after('<li id="to-registration-button"><a href="#"><span class="glyphicon glyphicon-user"></span> Реєстрація</a></li><li id="to-login-button"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вхід</a></li>');
+            $('.is-login').remove();
             $('.logout-button').remove();
             registrationAndLoginEventListener();
         });
@@ -48,8 +48,9 @@ function sendFormData(url, form) {
         console.log(data);
         console.log(url);
         if(data.answer == "OK") {
-            $('.is-login').html(data.loginvalue);
-            $('.is-login').after('<button class="logout-button">Вийти</button>');
+            $('.nav.navbar-nav.navbar-right').prepend('<li class="is-login"><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>')
+            $('.is-login a').append(data.loginvalue);
+            $('.is-login').after('<li class="logout-button"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Вихід</a></li>');
             $('#to-login-button').remove();
             $('#to-registration-button').remove();
         }
