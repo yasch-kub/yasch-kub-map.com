@@ -62,6 +62,7 @@ function sendFormData(url, form) {
             $('#to-registration-button').remove();
             autoScrollTop();
             form.fadeOut(400);
+            
         }
         console.log(data.loginvalue);
         inputs.each(function() {
