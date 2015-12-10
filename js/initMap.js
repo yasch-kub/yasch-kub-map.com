@@ -68,13 +68,13 @@ var addClickListeners = function() {
 
 function putMarkers(data){
     data.forEach(function(curMarker){
-        var contentInfoWindow = "<div>" + curMarker.info.toString() + "<div class='rating'>" +
+        var contentInfoWindow = "<div class='info-window'><div class='info-window-title'>" + curMarker.name + "</div><div class='info-about-place'>" + curMarker.info.toString() + "</div><div class='rating'>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
-            "</div><button class='show-details'>Детальніше</button></div>";
+            "</div><div><button class='show-details btn btn-success'>Детальніше</button></div></div>";
 
         var infowindow = new google.maps.InfoWindow({
             content: contentInfoWindow
@@ -110,6 +110,7 @@ function putMarkers(data){
                     $('#data').html(data);
                 });
                 console.log($('.comment'));
+                autoScroll();
                 $('#data').showOrHideElement();
             });
         });

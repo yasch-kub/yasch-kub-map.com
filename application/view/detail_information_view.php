@@ -10,9 +10,11 @@
         <span>Ваш коментар:</span>
         <textarea name="comment"></textarea>
     </label>
-    <button type="submit">
-        Відправити
-    </button>
+    <div>
+        <button class="btn btn-warning" type="submit">
+            Відправити
+        </button>
+    </div>
 </form>
 
 

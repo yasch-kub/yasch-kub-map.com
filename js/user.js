@@ -17,7 +17,13 @@ $(document).ready(function() {
     });
 
     $('#add-place-button').click(function() {
-        $('#add-place').showOrHideElement();
+        if (document.cookie.search('login=') != -1){
+            $('#registration-form, #login-form').fadeOut(400);
+            $('#add-place').showOrHideElement();
+            autoScroll();
+        }
+        else
+            alert('Ви не війшли в акаунт');
     });
 
     registrationAndLoginEventListener();
@@ -37,6 +43,7 @@ $(document).ready(function() {
             $('.is-login').after('<li id="to-registration-button"><a href="#"><span class="glyphicon glyphicon-user"></span> Реєстрація</a></li><li id="to-login-button"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вхід</a></li>');
             $('.is-login').remove();
             $('.logout-button').remove();
+            $('#add-place').fadeOut(400);
             registrationAndLoginEventListener();
         });
     });
@@ -53,6 +60,8 @@ function sendFormData(url, form) {
             $('.is-login').after('<li class="logout-button"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Вихід</a></li>');
             $('#to-login-button').remove();
             $('#to-registration-button').remove();
+            autoScrollTop();
+            form.fadeOut(400);
         }
         console.log(data.loginvalue);
         inputs.each(function() {
@@ -77,6 +86,8 @@ function sendFormData(url, form) {
 
 function registrationAndLoginEventListener(){
     $('#to-registration-button, #login-form a').click(function() {
+        autoScroll();
+        $('#add-place').fadeOut(400);
         if($('#login-form').css('display') != 'none')
             $('#login-form').fadeOut(400, function() {
                 $('#registration-form').showOrHideElement();
@@ -86,6 +97,8 @@ function registrationAndLoginEventListener(){
     });
 
     $('#to-login-button, #registration-form a').click(function() {
+        autoScroll();
+        $('#add-place').fadeOut(400);
         if($('#registration-form').css('display') != 'none')
             $('#registration-form').fadeOut(400, function() {
                 $('#login-form').showOrHideElement();

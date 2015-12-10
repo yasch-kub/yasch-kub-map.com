@@ -15,6 +15,7 @@ $(document).ready(function(){
 
         if(validate($(this))) {
             var data = $(this).serialize() + "&altitude=" + altitude + "&longtitude=" + longtitude;
+            $(this).trigger('reset');
             $.ajax({
                 url: 'place/add',
                 type: 'post',
@@ -23,6 +24,7 @@ $(document).ready(function(){
                 success: function (data) {
                     console.log([data]);
                     putMarkers([data]);
+                    autoScrollTop();
                 }
             })
         }
@@ -62,4 +64,12 @@ var validate = function(target)
     }
 
     return isValid;
+}
+
+function autoScroll(){
+    $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+}
+
+function autoScrollTop(){
+    $("html, body").animate({ scrollTop: 0 }, 1000);
 }

@@ -86,4 +86,11 @@ class place_model
         $result = $db->query($query)->fetch(PDO::FETCH_ASSOC);
         return $result['count'] == '0' ? false : true;
     }
+
+    public static function getAddedPlaceId(){
+        $db = Db::getConnection();
+        $query = sprintf("SELECT MAX(place.id) as id FROM place ");
+        $result = $db->query($query)->fetch(PDO::FETCH_ASSOC);
+        return $result['id'];
+    }
 }

@@ -34,6 +34,7 @@ class place_controller
         if (place_model::addPlace($name, $address, $category, $info, $altitude, $longtitude))
         {
             $result = array(
+                'id' => place_model::getAddedPlaceId(),
                 'name' => $name,
                 'info' => $info,
                 'longtitude' => $longtitude,
@@ -50,7 +51,7 @@ class place_controller
      * @param $id
      */
     public static function action_add_rating($mark, $id){
-        if (isset($_COOKIE['login'])){
+        if (!empty($_COOKIE['login'])){
             if (!place_model::isUserRatePlace($id)){
                 place_model::addRating($mark, $id);
                 exit(place_model::getAverageRating($id));

@@ -59,7 +59,7 @@ nav li:hover{
     margin: 0;
     padding: 0;
     width: 100%;
-    height: calc(100%  - 150px);
+    height: calc(100% - 10px);
 }
 form,input,textarea,button{
     margin: 5px 0 0 5px;
@@ -74,7 +74,6 @@ form#add-place {
 }
 
 .rating {
-    float:left;
     unicode-bidi: bidi-override;
     direction: rtl;
     font-size: 24px;
@@ -88,6 +87,7 @@ form#add-place {
 .rating > span:hover ~ span:before {
     cursor: pointer;
     content: "\f005";
+    color: gold;
     position: absolute;
 }
 
@@ -120,4 +120,53 @@ footer p{
     text-transform: uppercase;
     margin: 0!important;
     color: #9d9d9d;
+}
+
+/*login.php*/
+
+#login-form {
+    width: 300px;
+}
+.btn-lg {
+
+    margin: 5px auto !important;
+    padding: 6px 0px !important;
+    float: none !important;
+
+}
+
+/*registration.php*/
+
+#registration-form {
+    width: 300px;
+}
+
+/*add-place-form.php*/
+
+#add-place {
+    width: 300px;
+}
+
+/*InfoWindow*/
+.info-window {
+    text-align: center;
+    width: 200px;
+}
+
+.show-details {
+    margin: auto;
+}
+
+form {
+    margin: auto;
+}
+
+.info-window-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.fa-star, .fa-star-half-o{
+    color: #ffed3d;
 }
