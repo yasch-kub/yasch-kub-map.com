@@ -19,7 +19,7 @@
                     </div>
                     <div>
                         <ul class="nav navbar-nav">
-                            <input name="filter" placeholder="Виберіть фільтер" list="filter_list" class="form-control filter_list" autocomplete="off" required autofocus>
+                            <input id="selected-item" name="filter" placeholder="Виберіть фільтер" list="filter_list" class="form-control filter_list" autocomplete="off" required autofocus>
                             <datalist id="filter_list">
                                 <?php foreach(place_model::getCategories() as $cat): ?>
                                     <option><? echo $cat['name']; ?></option>

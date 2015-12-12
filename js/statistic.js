@@ -1,5 +1,10 @@
 $(document).ready(function() {
-    $('#filter_list option').click(function() {
-        console.log($(this).val());
+    $('#selected-item').on('input', function (){
+        var val = this.value;
+        if($('#filter_list').find('option').filter(function(){
+                return this.value === val;
+            }).length) {
+            console.log($(this).val());
+        }
     });
 });
