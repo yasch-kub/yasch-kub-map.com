@@ -9,5 +9,6 @@
         'user/login' => 'user/login',
         'user/registration' => 'user/registration',
         'logout' => 'user/logout',
+        'statistic' => 'statistic/view',
         '' => 'page/view'
     );

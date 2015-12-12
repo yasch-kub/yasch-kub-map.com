@@ -25,6 +25,9 @@
                         <ul class="nav navbar-nav">
                             <li id="add-place-button"><a href="#">Додати місце</a></li>
                         </ul>
+                        <ul class="nav navbar-nav">
+                            <li id="to-statistic-button"><a href="/statistic">Cтатистика</a></li>
+                        </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <?php if(isset($_COOKIE['login'])):?>
                                 <li class="is-login"><a href="#"><span class="glyphicon glyphicon-user"></span> <? echo($_COOKIE['login']); ?></a></li>

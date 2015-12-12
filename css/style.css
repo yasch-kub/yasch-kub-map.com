@@ -21,7 +21,7 @@ nav{
     font-size: 17px;
     border-radius: 0 !important;
 }
-nav li, nav a{
+nav li, nav li a{
     transition: all 0.6s ease;
 }
 nav li:hover{
@@ -52,6 +52,15 @@ nav li:hover{
     background-position: 95% 50%;
     background-size: 30px;
 }
+
+#to-statistic-button {
+    padding-right: 25px;
+    background-image: url('../images/statistic.png');
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+    background-size: 22px;
+}
+
 .glyphicon{
     margin-right: 2px;
 }
@@ -192,4 +201,15 @@ form {
     color:#aaa;
     font-family: verdana;
     font-size: 12px;
+}
+
+/*Statistic*/
+
+.form-control.filter_list {
+    margin-top: 8px;
+}
+
+#content {
+    margin: 50px 30px;
+
 }
