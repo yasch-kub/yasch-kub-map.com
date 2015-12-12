@@ -9,6 +9,7 @@
         'user/login' => 'user/login',
         'user/registration' => 'user/registration',
         'logout' => 'user/logout',
+        'statistic/get_table' => 'statistic/get_table',
         'statistic' => 'statistic/view',
         '' => 'page/view'
     );

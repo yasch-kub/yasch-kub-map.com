@@ -31,7 +31,7 @@ class place_model
     public static function getCategories()
     {
         $db = Db::getConnection();
-        $query = 'select name from category';
+        $query = 'SELECT name FROM category ORDER BY name';
         return $db->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 

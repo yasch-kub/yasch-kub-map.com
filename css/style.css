@@ -210,5 +210,21 @@ form {
 
 #content {
     margin: 50px 30px;
-
 }
+
+.rating.statistic {
+    float: left;
+    color: #222;
+    font-size: 20px;
+
+}.rating.statistic {
+    color: #222;
+    font-size: 20px;
+}
+
+.table.table-striped {
+    font-family: 'PF DinDisplay';
+    font-size: 15px;
+}
+
+

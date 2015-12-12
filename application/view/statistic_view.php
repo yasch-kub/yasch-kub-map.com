@@ -19,12 +19,12 @@
                     </div>
                     <div>
                         <ul class="nav navbar-nav">
-                            <input id="selected-item" name="filter" placeholder="Виберіть фільтер" list="filter_list" class="form-control filter_list" autocomplete="off" required autofocus>
-                            <datalist id="filter_list">
+                            <select id="selected-item" name="filter" placeholder="Виберіть фільтер" class="form-control filter_list" autocomplete="off" required>
+                                <option>Всі...</option>
                                 <?php foreach(place_model::getCategories() as $cat): ?>
                                     <option><? echo $cat['name']; ?></option>
                                 <?php endforeach; ?>
-                            </datalist>
+                            </select>
                         </ul>
                     </div>
                 </div>
