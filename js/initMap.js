@@ -69,7 +69,7 @@ var addClickListeners = function() {
 
 function putMarkers(data){
     data.forEach(function(curMarker){
-        var contentInfoWindow = "<div class='info-window'><div class='info-window-title'>" + curMarker.name + "</div><div class='info-about-place'>" + curMarker.info.toString() + "</div><div class='rating'>" +
+        var contentInfoWindow = "<div class='info-window'><div class='info-window-title'>" + curMarker.name + "</div><div class='info-window-address'>" + curMarker.address.toString() + "<br><br></div><div class='info-about-place'>" + curMarker.info.toString() + "</div><div class='rating'>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +
             "<span><i class='fa fa-star-o'></i></span>" +

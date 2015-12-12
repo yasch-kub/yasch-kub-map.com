@@ -36,6 +36,7 @@ class place_controller
             $result = array(
                 'id' => place_model::getAddedPlaceId(),
                 'name' => $name,
+                'address' => address,
                 'info' => $info,
                 'longtitude' => $longtitude,
                 'altitude' => $altitude,

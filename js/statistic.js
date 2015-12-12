@@ -8,7 +8,7 @@ $(document).ready(function() {
     //    }
     //});
     $('#selected-item').change(function (){
-        $.post('/statistic/get_table', $(this).val(), function(data) {
+        $.post('/statistic/get_table', $(this).val() == 'Всі...' ? '' : $(this).val(), function(data) {
             $('#content').fadeOut(300, function() {
                 $('#content').html(data);
             });
