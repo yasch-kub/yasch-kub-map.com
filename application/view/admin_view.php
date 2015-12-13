@@ -22,8 +22,8 @@
     </header>
     <div id="content">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#">Підтвердити місця</a></li>
-            <li><a href="#">Всі місця</a></li>
+            <li class="active"><a href="#" id="admin-to-new-place">Підтвердити місця</a></li>
+            <li><a href="#" id="admin-to-all-place">Всі місця</a></li>
         </ul>
         <div class="tab-content">
             <?php include_once root . '/application/view/templates/admin_new_place_table.php'; ?>

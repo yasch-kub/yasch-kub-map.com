@@ -12,6 +12,9 @@
         'statistic/get_table' => 'statistic/get_table',
         'statistic' => 'statistic/view',
         'admin/add/([0-9]+)' => 'admin/add/$1',
+        'admin/n' => 'admin/n',
+        'admin/new_place_table' => 'admin/new_place_table',
+        'admin/all_place_table' => 'admin/all_place_table',
         'admin/remove/([0-9]+)' => 'admin/remove/$1',
         'admin' => 'admin/view',
         '' => 'page/view'
