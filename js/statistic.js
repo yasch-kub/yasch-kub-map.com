@@ -50,7 +50,10 @@ $(document).ready(function() {
         console.log(options);
 
         $.post('statistic/get_table', JSON.stringify(options), function(data) {
-            $('#content tbody').html(data);
+            $('#content tbody').fadeOut(300, function() {
+                $(this).html(data);
+            });
+            $('#content tbody').fadeIn(300);
         });
     });
 });

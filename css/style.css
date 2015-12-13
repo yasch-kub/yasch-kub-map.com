@@ -253,3 +253,7 @@ th:hover {
 td:nth-child(6) {
     width: 150px !important;
 }
+
+.table tbody>tr>td{
+    vertical-align: middle !important;
+}
