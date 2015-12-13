@@ -22,7 +22,13 @@ class user_controller
     public static function action_login()
     {
         extract($_POST);
-        user_model::login($login, $password);
+        $result = user_model::login($login, $password);
+
+        ob_start();
+        include root . '/application/view/templates/header.php';
+        $result['header'] = ob_get_clean();
+
+        exit(json_encode($result));
     }
 
     public static function action_registration()
@@ -30,12 +36,24 @@ class user_controller
         extract($_POST);
         $login = Validation::clear($login);
         $email = Validation::clear($email);
-        user_model::registration($login, $password, $password_confirm, $email);
+        $result = user_model::registration($login, $password, $password_confirm, $email);
+
+        ob_start();
+        include_once root . '/application/view/templates/header.php';
+        $result['header'] = ob_get_clean();
+
+        exit(json_encode($result));
     }
 
     public static function action_logout()
     {
-        setcookie("login", "", time()-3600, "/");
-        setcookie("email", "", time()-3600, "/");
+        unset($_SESSION['login']);
+        unset($_SESSION['email']);
+
+        ob_start();
+        include_once root . '/application/view/templates/header.php';
+        $result['header'] = ob_get_clean();
+
+        exit(json_encode($result));
     }
 }

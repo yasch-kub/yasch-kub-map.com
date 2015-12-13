@@ -20,7 +20,7 @@ class user_model
     }
 
     public static function isAdmin() {
-        return isset($_COOKIE['login']) ? true : false;
+        return isset($_SESSION['login']) ? true : false;
     }
 
     public static function getAllCommentsByPlaceID($id)
@@ -56,11 +56,11 @@ class user_model
             $error['answer'] = 'OK';
             self::saveUser($login, $password, $email);
             $error['loginvalue'] = $login;
-            setcookie('login', $login, time() + 3600, "/");
-            setcookie('email', $email, time() + 3600, "/");
+            $_SESSION['login'] = $login;
+            $_SESSION['email'] = $email;
         }
 
-        exit(json_encode($error));
+        return $error;
     }
 
     public static function login($login, $password)
@@ -83,14 +83,14 @@ class user_model
                 $error['answer'] = 'OK';
                 $error['loginvalue'] = $login;
 
-                setcookie('login', $login, time() + 3600, "/");
-                setcookie('email', $user['email'], time() + 3600, "/");
+                $_SESSION['login'] = $login;
+                $_SESSION['email'] = $email;
             }
             else
                 $error['password'] = 'Невірний пароль.';
         }
 
-        exit(json_encode($error));
+        return $error;
     }
 
     private function saveUser($login, $password, $email)

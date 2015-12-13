@@ -29,7 +29,7 @@ nav li:hover{
 }
 #container{
     width: 100%;
-    height: calc(100% - 50px);
+    height: 100%;
 }
 .navbar-header{
     padding-left: 2%;
@@ -68,7 +68,7 @@ nav li:hover{
     margin: 0;
     padding: 0;
     width: 100%;
-    height: calc(100% - 10px);
+    height: calc(100% - 53px);
 }
 form,input,textarea,button{
     margin: 5px 0 0 5px;

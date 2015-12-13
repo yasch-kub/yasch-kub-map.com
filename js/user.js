@@ -1,8 +1,12 @@
 $.fn.showOrHideElement = function() {
-    if(this.css('display') == 'none')
+    if(this.css('display') == 'none') {
         this.fadeIn(400);
-    else
+        autoScroll();
+    }
+    else {
         this.fadeOut(400);
+        autoScrollTop();
+    }
     return this;
 };
 
@@ -16,11 +20,10 @@ $(document).ready(function() {
             });
     });
 
-    $('#add-place-button').click(function() {
+    $('body').on('click', '#add-place-button', function() {
         if (document.cookie.search('login=') != -1){
-            $('#registration-form, #login-form').fadeOut(400);
+            $('#control-panel form:not(form[id=add-place])').css('display', 'none');
             $('#add-place').showOrHideElement();
-            autoScroll();
         }
         else
             alert('Ви не війшли в акаунт');
@@ -37,15 +40,11 @@ $(document).ready(function() {
         event.preventDefault();
         sendFormData('/user/login', $(this));
     });
-    $('body').on('click','.logout-button',function(event){
+    $('body').on('click', '.logout-button',function(event){
         event.preventDefault();
         $.post('/logout', null, function(data){
-            $('.is-login').after('<li id="to-registration-button"><a href="#"><span class="glyphicon glyphicon-user"></span> Реєстрація</a></li><li id="to-login-button"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вхід</a></li>');
-            $('.is-login').remove();
-            $('.logout-button').remove();
-            $('#add-place').fadeOut(400);
-            registrationAndLoginEventListener();
-        });
+            $('header').html(data.header);
+        }, 'json');
     });
 });
 
@@ -55,11 +54,7 @@ function sendFormData(url, form) {
         console.log(data);
         console.log(url);
         if(data.answer == "OK") {
-            $('.nav.navbar-nav.navbar-right').prepend('<li class="is-login"><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>')
-            $('.is-login a').append(data.loginvalue);
-            $('.is-login').after('<li class="logout-button"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Вихід</a></li>');
-            $('#to-login-button').remove();
-            $('#to-registration-button').remove();
+            $('header').html(data.header);
             autoScrollTop();
             form.fadeOut(400);
             
@@ -86,26 +81,14 @@ function sendFormData(url, form) {
 }
 
 function registrationAndLoginEventListener(){
-    $('#to-registration-button, #login-form a').click(function() {
-        autoScroll();
-        $('#add-place').fadeOut(400);
-        if($('#login-form').css('display') != 'none')
-            $('#login-form').fadeOut(400, function() {
-                $('#registration-form').showOrHideElement();
-            });
-        else
-            $('#registration-form').showOrHideElement();
+    $('body').on('click', '#to-registration-button, #login-form a', function() {
+        $('#control-panel form:not(form[id=registration-form])').css('display', 'none');
+        $('#registration-form').showOrHideElement();
     });
 
-    $('#to-login-button, #registration-form a').click(function() {
-        autoScroll();
-        $('#add-place').fadeOut(400);
-        if($('#registration-form').css('display') != 'none')
-            $('#registration-form').fadeOut(400, function() {
-                $('#login-form').showOrHideElement();
-            });
-        else
-            $('#login-form').showOrHideElement()
+    $('body').on('click', '#to-login-button, #registration-form a', function() {
+        $('#control-panel form:not(form[id=login-form])').css('display', 'none');
+        $('#login-form').showOrHideElement();
     });
 }
 
