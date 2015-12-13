@@ -21,7 +21,13 @@
         </nav>
     </header>
     <div id="content">
-        <?php include_once root . '/application/view/templates/admin_place_table.php'; ?>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">Підтвердити місця</a></li>
+            <li><a href="#">Всі місця</a></li>
+        </ul>
+        <div class="tab-content">
+            <?php include_once root . '/application/view/templates/admin_new_place_table.php'; ?>
+        </div>
     </div>
 </div>
 </body>

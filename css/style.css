@@ -115,6 +115,10 @@ form#add-place {
     display: none;
 }
 
+.is-login {
+    text-transform: capitalize;
+}
+
 footer {
     font-family: 'PF DinDisplay';
     font-size: 17px;

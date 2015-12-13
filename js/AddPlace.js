@@ -22,8 +22,8 @@ $(document).ready(function(){
                 data: data,
                 dataType: 'json',
                 success: function (data) {
+                    alert("Заявка на додавання місця прийнята. Після перевірки адміністратором буде додана на карту.");
                     console.log([data]);
-                    putMarkers([data]);
                     autoScrollTop();
                 }
             })
