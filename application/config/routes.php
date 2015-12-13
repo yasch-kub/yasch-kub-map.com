@@ -11,5 +11,8 @@
         'logout' => 'user/logout',
         'statistic/get_table' => 'statistic/get_table',
         'statistic' => 'statistic/view',
+        'admin/add/([0-9]+)' => 'admin/add/$1',
+        'admin/remove/([0-9]+)' => 'admin/remove/$1',
+        'admin' => 'admin/view',
         '' => 'page/view'
     );

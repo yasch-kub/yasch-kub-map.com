@@ -62,7 +62,7 @@ nav li:hover{
 }
 
 .glyphicon{
-    margin-right: 2px;
+    margin-right: 5px;
 }
 #map{
     margin: 0;
@@ -242,6 +242,6 @@ th:hover {
     text-decoration: underline;
 }
 
-
-
-
+.btn {
+    font-family: 'PF DinDisplay' !important;
+}

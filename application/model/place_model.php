@@ -7,9 +7,9 @@ class place_model
     public static function getAllPlace()
     {
         $db = Db::getConnection();
-        $query = 'select place.id, place.name, place.address, place.info, icon, longtitude, altitude, mark from place
+        $query = "select place.id, place.name, place.address, place.info, icon, longtitude, altitude, mark from place
             join category on place.category_id = category.id
-            join marker on category.marker_id = marker.id';
+            join marker on category.marker_id = marker.id WHERE place.is_posted = '1'";
         return $db->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 

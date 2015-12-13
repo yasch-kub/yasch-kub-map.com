@@ -31,10 +31,13 @@
                         <ul class="nav navbar-nav navbar-right">
                             <?php if(isset($_COOKIE['login'])):?>
                                 <li class="is-login"><a href="#"><span class="glyphicon glyphicon-user"></span> <? echo($_COOKIE['login']); ?></a></li>
-                                <li class="logout-button"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Вихід</a></li>
+                                <li class="logout-button"><a href="#"><span class="glyphicon glyphicon-log-out"></span>Вихід</a></li>
                             <?php else: ?>
-                                <li id="to-registration-button"><a href="#"><span class="glyphicon glyphicon-user"></span> Реєстрація</a></li>
-                                <li id="to-login-button"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вхід</a></li>
+                                <li id="to-registration-button"><a href="#"><span class="glyphicon glyphicon-user"></span>Реєстрація</a></li>
+                                <li id="to-login-button"><a href="#"><span class="glyphicon glyphicon-log-in"></span>Вхід</a></li>
+                            <?php endif; ?>
+                            <?php if (user_model::isAdmin()): ?>
+                                <li id="to-admin-button"><a href="/admin"><span class="glyphicon glyphicon-wrench"></span>Панель керування</a></li>
                             <?php endif; ?>
                         </ul>
                     </div>

@@ -19,6 +19,10 @@ class user_model
         }
     }
 
+    public static function isAdmin() {
+        return isset($_COOKIE['login']) ? true : false;
+    }
+
     public static function getAllCommentsByPlaceID($id)
     {
         $db = Db::getConnection();
