@@ -1,34 +1,56 @@
 $(document).ready(function() {
-    //$('#selected-item').on('input', function (){
-    //    var val = this.value;
-    //    if($('#filter_list').find('option').filter(function(){
-    //            return this.value === val;
-    //        }).length) {
-    //        $.post();
-    //    }
-    //});
+
+    var fields = {
+        'Місце': 'name',
+        'Адреса': 'address',
+        'Рейтинг': 'mark' ,
+        'К-сть голосів': 'n_views',
+        'К-сть коментарів': 'n_comments'
+    };
+
+    var type;
+    var field;
+
     $('#selected-item').change(function (){
-        $.post('/statistic/get_table', $(this).val() == 'Всі...' ? '' : $(this).val(), function(data) {
+
+        var options = {
+            'category': $(this).val() == 'Всі...' ? '' : $(this).val(),
+            'field': field,
+            'order': type == 'ASC' ? true : false
+        }
+
+        $.post('/statistic/get_table', JSON.stringify(options), function(data) {
             $('#content').fadeOut(300, function() {
-                $('#content').html(data);
+                $('#content tbody').html(data);
             });
             $('#content').fadeIn(300);
         });
     });
 
-    $('th').click(function() {
+    $('#content').on('click', 'th' , function() {
         var el = $(this).children('span');
         var html = el.html();
 
         $('th span').html('');
         el.html(html);
 
-        var type;
-
         switch(el.html()) {
             case '': el.html('<i class="fa fa-long-arrow-down"></i>'); type = 'ASC'; break;
-            case '<i class="fa fa-long-arrow-up"></i>': el.html('<i class="fa fa-long-arrow-down"></i>'); type = 'DESC'; break;
+            case '<i class="fa fa-long-arrow-up"></i>': el.html('<i class="fa fa-long-arrow-down"></i>'); type = 'ASC'; break;
             case '<i class="fa fa-long-arrow-down"></i>': el.html('<i class="fa fa-long-arrow-up"></i>'); type = 'DESC'; break;
         }
+
+        field = fields[$(this).text()];
+        var options = {
+            'category': $('#selected-item').val() == 'Всі...' ? '' : $('#selected-item').val(),
+            'field': field,
+            'order': type == 'ASC' ? true : false
+        }
+
+        console.log(options);
+
+        $.post('statistic/get_table', JSON.stringify(options), function(data) {
+            $('#content tbody').html(data);
+        });
     });
 });

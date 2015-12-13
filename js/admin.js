@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    $('.admin-add-place-button, .admin-remove-place-button').click(function(event) {
+    $('.tab-content').on('click', '.admin-add-place-button, .admin-remove-place-button', function(event) {
         event.preventDefault();
         var id = $(this).parent('td').children(':input[type=hidden]').val();
         var tr = $(this).parent('td').parent('tr');
         var url = $(this).attr('class').search('admin-add-place-button') != -1 ? 'admin/add/' : 'admin/remove/';
 
-        $.post('admin/add/' + id, function(data) {
+        $.post(url + id, function(data) {
             console.log(tr);
             if (data.status == 'OK')
                     tr.remove();
@@ -14,11 +14,22 @@ $(document).ready(function() {
         }, 'json');
     });
 
-    $('.nav-tabs a').click(function() {
-        var url = $(this).attr('id') == 'admin-to-new-place' ? '/admin/new_place_table' : '/admin/all_place_table';
-        $.post('/admin/n', 'sdfsdfsdf', function(data) {
+    var tabs = {
+        'admin-tab-1': 'admin/get_new_place_table',
+        'admin-tab-2': 'admin/get_all_place_table'
+    };
+
+    $('.nav-tabs li').click(function(event) {
+        event.preventDefault();
+        var url = tabs[$(this).attr('id')];
+
+        if ($(this).attr('class') != 'active') {
             console.log(url);
-            $('.tab-content').html(data);
-        });
+            $('.nav-tabs li').removeClass('active');
+            $(this).addClass('active');
+            $.post(url, function(data) {
+                $('.tab-content').html(data);
+            });
+        }
     });
 });

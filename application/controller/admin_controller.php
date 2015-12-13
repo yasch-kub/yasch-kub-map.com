@@ -26,17 +26,11 @@ class admin_controller
             exit(json_encode(['status' => 'FAIL', 'message' => 'Помилка при видаленні']));
     }
 
-    public static function all_place_table() {
-        exit('allplace');
-        include root . '/application/view/templates/admin_place_table.php';
+    public static function action_get_all_place_table() {
+        include root . '/application/view/templates/admin_all_place_table.php';
     }
 
-    public static function new_place_table() {
-        exit('newplace');
+    public static function action_get_new_place_table() {
         include root . '/application/view/templates/admin_new_place_table.php';
-    }
-
-    public static function n() {
-        exit('newplace');
     }
 }

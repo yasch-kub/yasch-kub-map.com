@@ -31,7 +31,20 @@
             </nav>
         </header>
         <div id="content">
-            <?php include_once root . '/application/view/templates/statistic_table.php'; ?>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Місце<span><i class="fa fa-long-arrow-down"></i></span></th>
+                    <th>Адреса<span></span></th>
+                    <th>Рейтинг<span></span></th>
+                    <th>К-сть голосів<span></span></th>
+                    <th>К-сть коментарів<span></span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php include_once root . '/application/view/templates/statistic_table.php'; ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>

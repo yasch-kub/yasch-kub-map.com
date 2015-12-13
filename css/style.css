@@ -249,3 +249,7 @@ th:hover {
 .btn {
     font-family: 'PF DinDisplay' !important;
 }
+
+td:nth-child(6) {
+    width: 150px !important;
+}
