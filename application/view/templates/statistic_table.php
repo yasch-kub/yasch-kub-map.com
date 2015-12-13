@@ -1,11 +1,11 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>Місце</th>
-        <th>Адреса</th>
-        <th>Рейтинг</th>
-        <th>К-сть голосів</th>
-        <th>К-сть коментарів</th>
+        <th>Місце<span></span></th>
+        <th>Адреса<span></span></th>
+        <th>Рейтинг<span></span></th>
+        <th>К-сть голосів<span></span></th>
+        <th>К-сть коментарів<span></span></th>
     </tr>
     </thead>
     <tbody>

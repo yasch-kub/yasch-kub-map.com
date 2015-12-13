@@ -2,12 +2,13 @@
 
 class statistic_model
 {
-    public static function getAllPlaceByCategory($category = '') {
+    public static function getAllPlaceByCategory($category = '', $sort = 'place.name', $order = 'DESC') {
         $db = Db::getConnection();
         if (!empty($category))
         {
             $query = sprintf("SELECT place.id, mark, place.name, address FROM place
-                JOIN category ON place.category_id = category.id AND category.name = '%s'", $category);
+                JOIN category ON place.category_id = category.id AND category.name = '%s' ORDER BY '%s' '%s'",
+                $category, $sort, $order);
             $place = $db->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
             $query = sprintf("SELECT place.id, count(rating.id) as n_views FROM place
@@ -22,7 +23,8 @@ class statistic_model
         }
         else
         {
-            $query = "SELECT place.id, mark, place.name, address FROM place";
+            $query = sprintf("SELECT place.id, mark, place.name, address FROM place ORDER BY '%s' '%s'",
+                $sort, $order);
             $place = $db->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
             $query = sprintf("SELECT place.id, count(rating.id) as n_views FROM place

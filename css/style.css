@@ -232,4 +232,16 @@ form {
     font-size: 13px;
 }
 
+th span {
+    margin-left: 5px;
+    /*display: none;*/
+}
+
+th:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+
 
