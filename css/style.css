@@ -254,6 +254,15 @@ td:nth-child(6) {
     width: 150px !important;
 }
 
+td:nth-child(5) {
+    min-width: 300px !important;
+}
+
 .table tbody>tr>td{
     vertical-align: middle !important;
+}
+
+td textarea.form-control {
+    text-align: left !important;
+    height: 100px;
 }

@@ -16,7 +16,9 @@
             <td><? echo $place['category']; ?></td>
             <td><? echo $place['name']; ?></td>
             <td><? echo $place['address']; ?></td>
-            <td><? echo $place['info']; ?></td>
+            <td>
+                <textarea name="info" class="form-control"><? echo $place['info']; ?></textarea>
+            </td>
             <td>
                 <input type="hidden" value="<? echo $place['id']; ?>">
                 <button class="btn btn-lg btn-danger btn-block admin-remove-place-button">Видалити</button>

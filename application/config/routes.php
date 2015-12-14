@@ -11,6 +11,7 @@
         'logout' => 'user/logout',
         'statistic/get_table' => 'statistic/get_table',
         'statistic' => 'statistic/view',
+        'admin/change_info' => 'admin/change_info',
         'admin/add/([0-9]+)' => 'admin/add/$1',
         'admin/get_new_place_table' => 'admin/get_new_place_table',
         'admin/get_all_place_table' => 'admin/get_all_place_table',
