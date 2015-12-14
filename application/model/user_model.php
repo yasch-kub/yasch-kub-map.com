@@ -20,7 +20,15 @@ class user_model
     }
 
     public static function isAdmin() {
-        return isset($_SESSION['login']) ? true : false;
+        if(isset($_SESSION['login']))
+        {
+            $db = Db::getConnection();
+            $query = sprintf("SELECT user_type.name FROM user JOIN user_type ON user.type = user_type.id AND user.login = '%s'", $_SESSION['login']);
+            $result = $db->query($query)->fetch(PDO::FETCH_ASSOC);
+            return $result['name'] == 'admin' ? true : false;
+        }
+        else
+            return false;
     }
 
     public static function getAllCommentsByPlaceID($id)
