@@ -21,12 +21,8 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '#add-place-button', function() {
-        if (document.cookie.search('login=') != -1){
             $('#control-panel form:not(form[id=add-place])').css('display', 'none');
             $('#add-place').showOrHideElement();
-        }
-        else
-            alert('Ви не війшли в акаунт');
     });
 
     registrationAndLoginEventListener();
@@ -44,6 +40,7 @@ $(document).ready(function() {
         event.preventDefault();
         $.post('/logout', null, function(data){
             $('header').html(data.header);
+            $('#control-panel form').fadeOut(400);
         }, 'json');
     });
 });

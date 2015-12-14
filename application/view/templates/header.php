@@ -5,9 +5,11 @@
                 <a class="navbar-brand" href="#">yasch-kub-map</a>
             </div>
             <div>
-                <ul class="nav navbar-nav">
-                    <li id="add-place-button"><a href="#">Додати місце</a></li>
-                </ul>
+                <?php if(isset($_SESSION['login'])):?>
+                    <ul class="nav navbar-nav">
+                        <li id="add-place-button"><a href="#">Додати місце</a></li>
+                    </ul>
+                <?php endif; ?>
                 <ul class="nav navbar-nav">
                     <li id="to-statistic-button"><a href="/statistic">Cтатистика</a></li>
                 </ul>

@@ -60,7 +60,7 @@ class place_model
     public static function addRating($mark, $id){
         $db = Db::getConnection();
         $query = sprintf("INSERT INTO rating(mark, place_id, user_id) VALUES('%s','%s', (SELECT user.id FROM user WHERE user.login = '%s'))",
-            $mark, $id, $_COOKIE['login']);
+            $mark, $id, $_SESSION['login']);
         $db->exec($query);
         $query = sprintf("SELECT ROUND(AVG(mark) * 2, 0) / 2 AS mark FROM rating WHERE place_id = '%s'", $id);
         $result = $db->query($query)->fetch(PDO::FETCH_ASSOC);
@@ -82,7 +82,7 @@ class place_model
     public static function isUserRatePlace($place_id){
         $db = Db::getConnection();
         $query = sprintf("SELECT COUNT(*) as count FROM rating JOIN user ON user_id = user.id WHERE place_id = '%s' and user.login = '%s'",
-            $place_id, $_COOKIE['login']);
+            $place_id, $_SESSION['login']);
         $result = $db->query($query)->fetch(PDO::FETCH_ASSOC);
         return $result['count'] == '0' ? false : true;
     }
