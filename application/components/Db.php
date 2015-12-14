@@ -1,6 +1,9 @@
 <?php
 class Db
 {
+    /**
+     * @return PDO
+     */
     public static function getConnection(){
         $config = include(root . '/application/config/db_config.php');
         extract($config);

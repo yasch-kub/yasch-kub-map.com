@@ -2,12 +2,18 @@
 
 class user_controller
 {
+    /**
+     *
+     */
     public static function action_show_details()
     {
         $id = file_get_contents("php://input");
         include_once root . '/application/view/detail_information_view.php';
     }
 
+    /**
+     *
+     */
     public static function action_add_comment()
     {
         $id = $_POST['id'];
@@ -19,6 +25,9 @@ class user_controller
         include_once root . '/application/view/comment_view.php';
     }
 
+    /**
+     *
+     */
     public static function action_login()
     {
 
@@ -32,6 +41,9 @@ class user_controller
         exit(json_encode($result));
     }
 
+    /**
+     *
+     */
     public static function action_registration()
     {
         extract($_POST);
@@ -46,6 +58,9 @@ class user_controller
         exit(json_encode($result));
     }
 
+    /**
+     *
+     */
     public static function action_logout()
     {
         unset($_SESSION['login']);

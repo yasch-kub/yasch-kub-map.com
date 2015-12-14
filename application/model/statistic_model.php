@@ -4,6 +4,10 @@ class statistic_model
 {
     static public $field;
 
+    /**
+     * @param string $category
+     * @return array
+     */
     public static function getAllPlaceByCategory($category = '') {
         $db = Db::getConnection();
         if (!empty($category))
@@ -70,6 +74,12 @@ class statistic_model
         return $result;
     }
 
+    /**
+     * @param $array
+     * @param $field
+     * @param $increase
+     * @return mixed
+     */
     public static function sort($array, $field, $increase)
     {
         self::$field = $field;
@@ -80,11 +90,21 @@ class statistic_model
         return $array;
     }
 
+    /**
+     * @param $a
+     * @param $b
+     * @return int
+     */
     private function cmp_increase($a, $b)
     {
         return ($a[self::$field] < $b[self::$field]) ? -1 : 1;
     }
 
+    /**
+     * @param $a
+     * @param $b
+     * @return int
+     */
     private function cmp_decrease($a, $b)
     {
         return ($a[self::$field] > $b[self::$field]) ? -1 : 1;

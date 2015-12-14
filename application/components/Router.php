@@ -4,11 +4,17 @@ class Router
 {
     private $routes;
 
+    /**
+     * Router constructor.
+     */
     public function __construct()
     {
         $this->routes = include(root . '/application/config/routes.php');
     }
 
+    /**
+     *
+     */
     public function run()
 	{
         $isCorrectPage = false;
@@ -43,6 +49,9 @@ class Router
         */
     }
 
+    /**
+     *
+     */
     private function error404()
     {
         /*

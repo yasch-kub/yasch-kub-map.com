@@ -2,6 +2,9 @@
 
 class statistic_controller
 {
+    /**
+     *
+     */
     public static function action_view() {
         $places = statistic_model::getAllPlaceByCategory();
         $places = statistic_model::sort($places, 'name', true);
@@ -9,6 +12,9 @@ class statistic_controller
         include_once root . '/application/view/statistic_view.php';
     }
 
+    /**
+     *
+     */
     public static function action_get_table() {
         $options = json_decode(file_get_contents("php://input"), true);
         $category = $options['category'];

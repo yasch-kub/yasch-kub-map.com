@@ -2,6 +2,12 @@
 
 class user_model
 {
+    /**
+     * @param $id
+     * @param $comment
+     * @param $date
+     * @param $user
+     */
     public static function addComment($id, $comment, $date, $user)
     {
         $db = Db::getConnection();
@@ -19,6 +25,9 @@ class user_model
         }
     }
 
+    /**
+     * @return bool
+     */
     public static function isAdmin() {
         if(isset($_SESSION['login']))
         {
@@ -31,6 +40,10 @@ class user_model
             return false;
     }
 
+    /**
+     * @param $id
+     * @return array|Exception|PDOException
+     */
     public static function getAllCommentsByPlaceID($id)
     {
         $db = Db::getConnection();
@@ -46,6 +59,13 @@ class user_model
         }
     }
 
+    /**
+     * @param $login
+     * @param $password
+     * @param $passwordConfirm
+     * @param $email
+     * @return array
+     */
     public static function registration($login, $password, $passwordConfirm, $email)
     {
         $error = array(
@@ -71,6 +91,11 @@ class user_model
         return $error;
     }
 
+    /**
+     * @param $login
+     * @param $password
+     * @return array
+     */
     public static function login($login, $password)
     {
         $db = Db::getConnection();
@@ -101,6 +126,11 @@ class user_model
         return $error;
     }
 
+    /**
+     * @param $login
+     * @param $password
+     * @param $email
+     */
     private function saveUser($login, $password, $email)
     {
         $db = Db::getConnection();
@@ -114,6 +144,10 @@ class user_model
         $db -> exec($sql);
     }
 
+    /**
+     * @param $login
+     * @return bool
+     */
     private function isLoginExist($login)
     {
         $db = Db::getConnection();
@@ -125,6 +159,10 @@ class user_model
         return true;
     }
 
+    /**
+     * @param $email
+     * @return bool
+     */
     private function isEmailExist($email)
     {
         $db = Db::getConnection();
@@ -136,6 +174,11 @@ class user_model
         return true;
     }
 
+    /**
+     * @param $password
+     * @param $passwordConfirm
+     * @return array
+     */
     private function comparePasswords($password, $passwordConfirm)
     {
         $error = array();
@@ -152,6 +195,10 @@ class user_model
         return $error;
     }
 
+    /**
+     * @param $email
+     * @return string
+     */
     private function checkEmail($email)
     {
         if (filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -159,6 +206,10 @@ class user_model
         return 'Невірний email.';
     }
 
+    /**
+     * @param $name
+     * @return string
+     */
     private function checkName($name)
     {
         if (!empty($name))

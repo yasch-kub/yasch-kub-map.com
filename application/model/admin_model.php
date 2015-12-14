@@ -2,6 +2,9 @@
 
 class admin_model
 {
+    /**
+     * @return array
+     */
     public static function getAllNewAddedPlaces()
     {
         $db = Db::getConnection();
@@ -11,6 +14,10 @@ class admin_model
         return $db->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public static function postPlace($id)
     {
         $db = Db::getConnection();
@@ -19,6 +26,10 @@ class admin_model
         return $db->exec($query) ? true : false;
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public static function removePlace($id)
     {
         $db = Db::getConnection();
@@ -27,6 +38,11 @@ class admin_model
         return $db->exec($query) ? true : false;
     }
 
+    /**
+     * @param $info
+     * @param $id
+     * @return bool
+     */
     public static function changePlaceInfoById($info, $id)
     {
         $db = Db::getConnection();
