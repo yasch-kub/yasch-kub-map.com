@@ -44,10 +44,9 @@ $(document).ready(function() {
 
     $('.tab-content').on('focusout', 'textarea', function() {
         if (textareaValue != $(this).val()) {
-            console.log($(this).val());
             var id = $(this).parent('td').next('td').find(':input[type=hidden]').val();
             $.post('admin/change_info', $(this).serialize() + '&id=' + id, function (data) {
-                console.log('info updated in database ');
+                console.log(data);
             });
         }
     });

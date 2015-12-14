@@ -32,6 +32,6 @@ class admin_model
         $db = Db::getConnection();
         $query = sprintf("UPDATE place SET place.info = '%s' WHERE place.id = '%s'", $info, $id);
 
-        $db->exec($query);
+        return $db->exec($query) ? true : false;
     }
 }

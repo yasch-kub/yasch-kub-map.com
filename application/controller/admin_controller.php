@@ -37,6 +37,6 @@ class admin_controller
     public static function action_change_info() {
         $info = validation::clear($_POST['info']);
         $id = $_POST['id'];
-        admin_model::changePlaceInfoById($info, $id);
+        exit(admin_model::changePlaceInfoById($info, $id) ? 'Інформація оновлена' : 'Помилка при оновленні інформації');
     }
 }
